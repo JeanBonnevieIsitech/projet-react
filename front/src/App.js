@@ -60,7 +60,7 @@ function App() {
         response.then((response) => response.json())
         .then((data)=>{
           console.log(data)
-          setJeux(data[0])
+          setJeux(data)
         })
 
 

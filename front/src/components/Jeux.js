@@ -6,7 +6,9 @@ function Jeux(props){
 
     return (
         <div>
-            <h2>Liste de jeux</h2>
+            {props.jeux.map((jeu)=>(
+                <h2>{jeu.nom}</h2>
+            ))}
         </div>
     )
     
