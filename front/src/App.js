@@ -4,7 +4,6 @@ import './App.css';
 import Clock from './components/Clock'
 import { useCallback, useState } from 'react';
 import Weather from './components/Weather';
-import { initializeApp } from "firebase/app";
 
 function App() {
 
@@ -46,36 +45,12 @@ function App() {
       setWeather({'error': true})
     }
 
-    // api firebase
+    // api .net
 
-    // Import the functions you need from the SDKs you need
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+    function getGames(){
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCfJLT8GdSjpWLGXGE-IJ1ENm7VicEdVx0",
-  authDomain: "api-test-reac.firebaseapp.com",
-  databaseURL: "https://api-test-reac-default-rtdb.firebaseio.com",
-  projectId: "api-test-reac",
-  storageBucket: "api-test-reac.appspot.com",
-  messagingSenderId: "676279220685",
-  appId: "1:676279220685:web:c847216058f02dd7996c84"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-    const getGames = useCallback(async()=>{
-      const response = await fetch('https://api-test-reac.firebaseio.com/Jeux.json');
-
-      if (!response.ok) {
-        throw new Error('Something went wrong!');
-      }
-
-      const data = await response.json();
-      console.log(data)
-
-    })
+    }
+    
 
 
   return (
