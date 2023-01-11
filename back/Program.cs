@@ -17,6 +17,12 @@ namespace WebApplication1
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddCors(p => p.AddPolicy("corspolicy", build =>
+            {
+                build.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader();
+            }));
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -26,6 +32,7 @@ namespace WebApplication1
                 app.UseSwaggerUI();
             }
 
+            app.UseCors("corspolicy");
             app.UseHttpsRedirection();
 
             app.UseAuthorization();

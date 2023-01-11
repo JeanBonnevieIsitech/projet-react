@@ -2,13 +2,18 @@ import logo from './logo.svg';
 import './App.css';
 // import Bonsoir from './components/Bonsoir';
 import Clock from './components/Clock'
-import { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Weather from './components/Weather';
+import Jeux from './components/Jeux';
+const cors = require('cors')
 
 function App() {
 
   const [time, setTime] = useState(new Date())
   const [weather, setWeather] = useState(null)
+  const [jeux, setJeux] = useState(null)
+
+
 
   function refreshClock() {
     setTime(new Date())
@@ -49,7 +54,18 @@ function App() {
 
     function getGames(){
 
+
+
+        const response = fetch('https://localhost:7155/api/Jeux')
+        response.then((response) => response.json())
+        .then((data)=>{
+          console.log(data)
+          setJeux(data[0])
+        })
+
+
     }
+    
     
 
 
@@ -61,6 +77,7 @@ function App() {
         <Clock time={time} />
         <Weather weather={weather}/>
         <button onClick={getLocation}>Actualiser météo</button>
+        <Jeux jeux={jeux}/>
         <button onClick={getGames}>List des jeux</button>
         {/* <Bonsoir name="Jean" />
         <Bonsoir name="Louis" /> */}
