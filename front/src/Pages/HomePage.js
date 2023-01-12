@@ -1,14 +1,11 @@
 
-
-import './App.css';
 // import Bonsoir from './components/Bonsoir';
-import Clock from './components/Clock'
-import Weather from './components/Weather';
-import Jeux from './components/Jeux';
-import Test from './components/Test';
-import Day from './components/Day';
-import React, { useCallback, useEffect, useState, useContext, useReducer, createContext } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import Clock from '../components/Clock'
+import Weather from '../components/Weather';
+import Jeux from '../components/Jeux';
+import Test from '../components/Test';
+import Day from '../components/Day';
+import React, { useState } from 'react';
 
 
 function HomePage() {
@@ -84,7 +81,6 @@ function HomePage() {
     return (
 
             <div>
-
                 <Clock time={time} />
                 <Weather weather={weather} />
                 <button onClick={getLocation}>Actualiser météo</button>

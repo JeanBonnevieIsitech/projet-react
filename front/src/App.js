@@ -1,10 +1,8 @@
 import './App.css';
 import logo from './logo.svg';
-// import HomePage from './pages/HomePage';
 import {Routes, Route} from "react-router-dom";
-// import Bonsoir from './components/Bonsoir';
-import HomePage from './HomePage';
-import TestPage from './TestPage';
+import HomePage from './Pages/HomePage';
+import TestPage from './Pages/TestPage';
 import { Link } from 'react-router-dom';
 
 function App() {
