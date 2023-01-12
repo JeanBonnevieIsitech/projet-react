@@ -2,12 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 // import Bonsoir from './components/Bonsoir';
 import Clock from './components/Clock'
-import React, { useCallback, useEffect, useState, useContext, useReducer, createContext } from 'react';
 import Weather from './components/Weather';
 import Jeux from './components/Jeux';
 import Test from './components/Test';
 import Day from './components/Day';
+import React, { useCallback, useEffect, useState, useContext, useReducer, createContext } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
+import TestPage from './pages/TestPage';
+import { Link } from 'react-router-dom';
 
 function App() {
 
@@ -16,6 +19,8 @@ function App() {
   const [jeux, setJeux] = useState(null)
   const [message, setMessage] = useState("Test")
   const [day, setDay] = useState(true)
+
+
 
 
   function refreshClock() {
@@ -83,6 +88,10 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
 
+        <Routes>
+          <Route path='test' element={<TestPage/>}/>
+        </Routes>
+        <Link to="test">Page de test</Link>
         <Clock time={time} />
         <Weather weather={weather} />
         <button onClick={getLocation}>Actualiser météo</button>
