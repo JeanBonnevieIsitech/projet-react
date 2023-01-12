@@ -5,13 +5,6 @@ function Jeux(props) {
     if (!props.jeux) {
         return false
     }
-
-    if (props.loading) {
-        return <h3>Chargement...</h3>
-    }
-
-    else {
-
         return (
             <div>
                 <h3>Liste des jeux</h3>
@@ -23,7 +16,7 @@ function Jeux(props) {
                 ))}
             </div>
         )
-    }
+
 
 }
 

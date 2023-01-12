@@ -2,11 +2,11 @@ import logo from './logo.svg';
 import './App.css';
 // import Bonsoir from './components/Bonsoir';
 import Clock from './components/Clock'
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useContext, useReducer, createContext } from 'react';
 import Weather from './components/Weather';
 import Jeux from './components/Jeux';
 import Test from './components/Test';
-const cors = require('cors')
+
 
 function App() {
 
@@ -14,7 +14,6 @@ function App() {
   const [weather, setWeather] = useState(null)
   const [jeux, setJeux] = useState(null)
   const [message, setMessage] = useState("Test")
-
 
 
   function refreshClock() {
@@ -26,7 +25,7 @@ function App() {
   // api météo
 
   function getLocation() {
-    setWeather({'loading':true})
+    setWeather({ 'loading': true })
     navigator.geolocation.getCurrentPosition(onLocationsuccess, onLocationfailure)
   }
 
@@ -42,38 +41,34 @@ function App() {
       })
 
 
-      .catch(error =>{
+      .catch(error => {
         setWeather(null)
       }
-        )
+      )
 
-    }
-    function onLocationfailure(error) {
-      setWeather({'error': true})
-    }
+  }
+  function onLocationfailure(error) {
+    setWeather({ 'error': true })
+  }
 
-    // api .net
+  // api .net
 
-    function getGames(){
-
-
-        setJeux({'loading':true})
-        const response = fetch('https://localhost:7155/api/Jeux')
-        response.then((response) => response.json())
-        .then((data)=>{
-          console.log(data)
-          setJeux(data)
-        })
+  function getGames() {
 
 
-    }
-    
-    function triggtest(){
-      setMessage("Test validé")
-    }
-    
+    const response = fetch('https://localhost:7155/api/Jeux')
+    response.then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        setJeux(data)
+      })
 
 
+  }
+
+  function triggtest() {
+    setMessage("Test validé")
+  }
 
 
 
@@ -83,11 +78,11 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
 
         <Clock time={time} />
-        <Weather weather={weather}/>
+        <Weather weather={weather} />
         <button onClick={getLocation}>Actualiser météo</button>
-        <Jeux jeux={jeux}/>
+        <Jeux jeux={jeux} />
         <button onClick={getGames}>List des jeux</button>
-        <Test message={message}/>
+        <Test message={message} />
         <button onClick={triggtest}>Test</button>
       </header>
     </div>
