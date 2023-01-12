@@ -6,6 +6,7 @@ import React, { useCallback, useEffect, useState, useContext, useReducer, create
 import Weather from './components/Weather';
 import Jeux from './components/Jeux';
 import Test from './components/Test';
+import Day from './components/Day';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   const [weather, setWeather] = useState(null)
   const [jeux, setJeux] = useState(null)
   const [message, setMessage] = useState("Test")
+  const [day, setDay] = useState(true)
 
 
   function refreshClock() {
@@ -72,7 +74,9 @@ function App() {
     setMessage("Test validé")
   }
 
-
+  function daySwitch(){
+    setDay(!day)
+  }
 
   return (
     <div className="App">
@@ -83,9 +87,11 @@ function App() {
         <Weather weather={weather} />
         <button onClick={getLocation}>Actualiser météo</button>
         <Jeux jeux={jeux} />
-        <button onClick={getGames}>List des jeux</button>
+        <button onClick={getGames}>Liste des jeux</button>
         <Test message={message} />
         <button onClick={triggtest}>Test</button>
+        <Day day={day}/>
+        <button onClick={daySwitch}>Changer</button>
       </header>
     </div>
   );
