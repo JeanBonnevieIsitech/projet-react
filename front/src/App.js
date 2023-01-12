@@ -42,25 +42,27 @@ function App() {
 
 
       .catch(error => {
-        setWeather(null)
+        setWeather({'error':'Une erreur est survenue'})
       }
       )
 
   }
   function onLocationfailure(error) {
-    setWeather({ 'error': true })
+    setWeather({ 'error': 'vous devez autoriser la localisation'})
   }
 
   // api .net
 
   function getGames() {
 
-
+    setJeux({'loading':true})
     const response = fetch('https://localhost:7155/api/Jeux')
     response.then((response) => response.json())
       .then((data) => {
         console.log(data)
         setJeux(data)
+      }).catch(error=>{
+        setJeux({'error':'Une erreur est survenue'})
       })
 
 

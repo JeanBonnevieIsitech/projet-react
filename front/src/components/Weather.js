@@ -4,7 +4,7 @@ function Weather(props){
     }
     
     if (props.weather.error){
-        return <h2>vous devez autoriser la localisation</h2>
+        return <h2>{props.weather.error}</h2>
 
     }
 
