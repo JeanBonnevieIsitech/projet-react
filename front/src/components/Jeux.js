@@ -1,17 +1,30 @@
-function Jeux(props){
+import Card from './Card';
 
-    if (!props.jeux){
+function Jeux(props) {
+
+    if (!props.jeux) {
         return false
     }
 
-    return (
-        <div>
-            {props.jeux.map((jeu)=>(
-                <h2>{jeu.nom}</h2>
-            ))}
-        </div>
-    )
-    
+    if (props.loading) {
+        return <h3>Chargement...</h3>
+    }
+
+    else {
+
+        return (
+            <div>
+                <h3>Liste des jeux</h3>
+                {props.jeux.map((jeu) => (
+                    <Card>
+                        <p>Titre : {jeu.name}</p>
+                        <p>Desc : {jeu.description}</p>
+                    </Card>
+                ))}
+            </div>
+        )
+    }
+
 }
 
 export default Jeux

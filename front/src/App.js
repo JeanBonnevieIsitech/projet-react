@@ -5,6 +5,7 @@ import Clock from './components/Clock'
 import React, { useCallback, useEffect, useState } from 'react';
 import Weather from './components/Weather';
 import Jeux from './components/Jeux';
+import Test from './components/Test';
 const cors = require('cors')
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   const [time, setTime] = useState(new Date())
   const [weather, setWeather] = useState(null)
   const [jeux, setJeux] = useState(null)
+  const [message, setMessage] = useState("Test")
 
 
 
@@ -55,7 +57,7 @@ function App() {
     function getGames(){
 
 
-
+        setJeux({'loading':true})
         const response = fetch('https://localhost:7155/api/Jeux')
         response.then((response) => response.json())
         .then((data)=>{
@@ -66,7 +68,13 @@ function App() {
 
     }
     
+    function triggtest(){
+      setMessage("Test validé")
+    }
     
+
+
+
 
 
   return (
@@ -79,8 +87,8 @@ function App() {
         <button onClick={getLocation}>Actualiser météo</button>
         <Jeux jeux={jeux}/>
         <button onClick={getGames}>List des jeux</button>
-        {/* <Bonsoir name="Jean" />
-        <Bonsoir name="Louis" /> */}
+        <Test message={message}/>
+        <button onClick={triggtest}>Test</button>
       </header>
     </div>
   );
